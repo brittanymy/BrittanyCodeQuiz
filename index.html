@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Code Quiz</title>
+</head>
+<body>
+    <!-- Timer & HighScores -->
+    <section class="top__container hide-top">
+        <button class="vhs" id="vhs">View High Scores</button>
+        <p class="timer">Time:<span class="timer" id="timer"></span></p>
+    </section>
+    
+    <div class="center__content">
+        <!-- Intro Screen -->
+        <div id="intro">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the following code-related questions within the time limit. 
+                Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <div>
+                <button class="start-btn btn" id="start-btn">Start Quiz</button>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="question__container hide" id="question__container">
+            <h2 class="question" id="question"></h2>
+
+            <div class="answers" id="answers">
+                <!-- Generate in JS -->
+                <!-- <button class="btn">1. Answer</button>
+                <button class="btn">2. Answer</button>
+                <button class="btn">3. Answer</button>
+                <button class="btn">4. Answer</button> -->
+            </div>
+
+            <!-- Correct/Wrong -->
+            <div>
+                <hr class="hide">   
+                    <div class="correct hide">
+                        <p class="correct" id="correct">Correct!</p>
+                    </div>
+                    <div class="wrong hide">
+                        <p class="wrong" id="wrong">Wrong!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Completion -->
+        <div class="all__done-container hide">
+            <h2 class="alldone">All done!</h2>
+            
+            <div class="form__container">
+                <form id="initials">
+                    Enter initials: <input type="text">
+                    <input type="submit" class="submit-btn btn" id="submit-btn">
+                </form>
+            </div>
+        </div>
+
+        <!-- High Score List -->
+        <div>
+            <h2 class="hs__title hide">High Scores</h2>
+            <ol class="hs__list hide" id="hs-list">
+
+            </ol>
+            
+            <div class="backclear__container">
+                <button class="goback-btn btn hide" id="back-btn">Go Back</button>
+                <button class="clearhs-btn btn hide" id="clear-btn">Clear High Scores</button>
+            </div>
+        </div>
+       
+    <!-- JS -->
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
