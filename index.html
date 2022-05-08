@@ -27,7 +27,7 @@
         </div>
 
         <!-- Quiz Section -->
-        <div class="question__container hide" id="question__container">
+        <div class="question__container center__content hide" id="question__container">
             <h2 class="question" id="question"></h2>
 
             <div class="answers" id="answers">
@@ -41,19 +41,22 @@
             <!-- Correct/Wrong -->
             <div>
                 <hr class="hide">   
-                    <div class="correct hide">
+                    <!-- <div class="correct hide">
                         <p class="correct" id="correct">Correct!</p>
                     </div>
                     <div class="wrong hide">
                         <p class="wrong" id="wrong">Wrong!</p>
-                    </div>
+                    </div> -->
+
+                    <p class="correct hide" id="correct">Correct!</p>
+                    <p class="wrong hide" id="wrong">Wrong!</p>
                 </div>
             </div>
         </div>
 
         <!-- Quiz Completion -->
-        <div class="all__done-container hide">
-            <h2 class="alldone">All done!</h2>
+        <div class="all__done-container center__content hide" id="all__done-container">
+            <h2 class="alldone" id="scoreTitle">All done!</h2>
             
             <div class="form__container">
                 <form id="initials">
@@ -64,7 +67,7 @@
         </div>
 
         <!-- High Score List -->
-        <div>
+        <div class="hs__container center__content" id="hs__container">
             <h2 class="hs__title hide">High Scores</h2>
             <ol class="hs__list hide" id="hs-list">
 

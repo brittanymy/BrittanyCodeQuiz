@@ -87,11 +87,6 @@ p {
     border-radius: 10px;   
 }
 
-.answers {
-    display: grid;
-    float: left;
-}
-
 /* Hide Content */
 .hide {
     display: none;
@@ -119,10 +114,9 @@ p {
 }
 
 /* Quiz Completion Section */
-.all__done-container {
-    position: absolute;
-    justify-self: center;
-}
+/* .all__done-container {
+    
+} */
 
 /* Correct/Wrong */
 .correct,
