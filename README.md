@@ -23,6 +23,6 @@ WHEN the game is over
 THEN I can save my initials and score
 
 ### ToDo
-
+-   
 
 #### Deployed link & Screenshot

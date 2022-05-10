@@ -10,10 +10,10 @@
 </head>
 <body>
     <!-- Timer & HighScores -->
-    <section class="top__container hide-top">
+    <div class="top__container hide-top">
         <button class="vhs" id="vhs">View High Scores</button>
         <p class="timer">Time:<span class="timer" id="timer"></span></p>
-    </section>
+    </div>
     
     <div class="center__content">
         <!-- Intro Screen -->
@@ -31,23 +31,12 @@
             <h2 class="question" id="question"></h2>
 
             <div class="answers" id="answers">
-                <!-- Generate in JS -->
-                <!-- <button class="btn">1. Answer</button>
-                <button class="btn">2. Answer</button>
-                <button class="btn">3. Answer</button>
-                <button class="btn">4. Answer</button> -->
+                <!-- Generate answer choices in JS -->
             </div>
 
             <!-- Correct/Wrong -->
             <div>
                 <hr class="hide">   
-                    <!-- <div class="correct hide">
-                        <p class="correct" id="correct">Correct!</p>
-                    </div>
-                    <div class="wrong hide">
-                        <p class="wrong" id="wrong">Wrong!</p>
-                    </div> -->
-
                     <p class="correct hide" id="correct">Correct!</p>
                     <p class="wrong hide" id="wrong">Wrong!</p>
                 </div>
@@ -59,23 +48,23 @@
             <h2 class="alldone" id="scoreTitle">All done!</h2>
             
             <div class="form__container">
-                <form id="initials">
-                    Enter initials: <input type="text">
+                <form>
+                    Enter initials: <input id="initials" type="text">
                     <input type="submit" class="submit-btn btn" id="submit-btn">
                 </form>
             </div>
         </div>
 
         <!-- High Score List -->
-        <div class="hs__container center__content" id="hs__container">
-            <h2 class="hs__title hide">High Scores</h2>
-            <ol class="hs__list hide" id="hs-list">
+        <div class="hs__container center__content hide" id="hs__container">
+            <h2 class="hs__title">High Scores</h2>
+            <ol class="hs__list" id="hs-list">
 
             </ol>
             
             <div class="backclear__container">
-                <button class="goback-btn btn hide" id="back-btn">Go Back</button>
-                <button class="clearhs-btn btn hide" id="clear-btn">Clear High Scores</button>
+                <button class="goback-btn btn" id="back-btn">Go Back</button>
+                <button class="clearhs-btn btn" id="clear-btn">Clear High Scores</button>
             </div>
         </div>
        

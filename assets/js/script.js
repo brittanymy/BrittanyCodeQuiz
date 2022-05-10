@@ -5,7 +5,7 @@ const quizQuestion = document.getElementById ('question'),
      startBtn = document.getElementById ('start-btn'),
      inputInitials = document.getElementById ('initials'),
      submitBtn = document.getElementById ('submit-btn'),
-     highScoreList = document.getElementById ('hs__list'),
+     highScoreList = document.getElementById ('hs-list'),
      correctAnswer = document.getElementById ('correct'),
      wrongAnswer = document.getElementById ('wrong'),
      goBack = document.getElementById ('back-btn'),
@@ -23,6 +23,7 @@ let timerCounter = 75;
 let timerInterval;
 let userSelectedAnswer = false;
 
+// Quiz!
 let quizQuestions = [
     { 
         question: "If there is a mistake or problem in your program, there is a what?",
@@ -31,26 +32,26 @@ let quizQuestions = [
     },
     {
         question: "What is the art of creating a program?",
-        answers: ["1: Program", "2: Debugging", "3: Parameter", "4: Programming"],
+        answers: ["Program", "Debugging", "Parameter", "Programming"],
         correctAnswer: "Programming",
     },
     {
         question: "What is trying again and again, even when something is hard?",
-        answers: ["1: Persistence", "2: Program", "3: Code", "4: Command"],
+        answers: ["Persistence", "Program", "Code", "Command"],
         correctAnswer: "Persistence",
     },
     {
         question: "What is an Algorithm?",
-        answers: ["1: Long division", "2: A series of instructions on how to accomplish a task", "3: A way to play the drums", "4: A way to write music on paper"],
+        answers: ["Long division", "A series of instructions on how to accomplish a task", "A way to play the drums", "A way to write music on paper"],
         correctAnswer: "A series of instructions on how to accomplish a task",
     },
     {   
         question: "What can you make with programming?",
-        answers: ["1: Websites", "2: Games", "3: Apps", "4: All of the above"],
+        answers: ["Websites", "Games", "Apps", "All of the above"],
         correctAnswer: "All of the above", 
     }
 ];
-// Begin Quiz
+// Begin Quiz Button
 startBtn.addEventListener ('click', startQuiz)
 
 // Quiz Timer
@@ -72,37 +73,32 @@ function switchScreen(fromScreen, toScreen) {
     toScreen.classList.remove('hide');
 }
 
+// Calls Quiz Question
 function getNextQuestion() {
-    // reset the answer feedback elements
+    // Resets correct/wrong answer feedback
     correctAnswer.classList.add('hide');
     wrongAnswer.classList.add('hide');
 
-    // get the current question object (if it exists)
+    // Get the current question object (if it exists)
     const currentQuestion = quizQuestions[qCounter];
 
-    // if next question doesn't exist, then return out
+    // If next question doesn't exist, then return out
     if (!currentQuestion) return;
 
-    // otherwise, update question title and return the next question object
+    // Otherwise, update question title and return the next question object
     quizQuestion.textContent = currentQuestion.question;
     qCounter++;
 
     return currentQuestion;
 }
 
+// Generate Answer Buttons
 function generateAnswerButtons(currentQuestion) {
 
-    // get list of answer choices in the current question object
+    // Get list of answer choices in the current question object
     const answerChoices = currentQuestion.answers;
 
-    // start answer counter at 0th index, increase index by 1 every loop cycle
-    // repeat process until answer counter is no longer less than the answer choices list
-    // for (let answerIndex = 0; answerIndex < answerChoices.length; answerIndex++) {
-    //     const answerChoice = answerChoices[answerIndex];
-
-    // }
-
-    // iterate over the answer choices list and generate the answer buttons
+    // Iterate over the answer choices list and generate the answer buttons
     answerChoices.forEach(answerChoice => {
         const btnEl = document.createElement('button');
         quizAnswers.appendChild(btnEl);
@@ -111,6 +107,7 @@ function generateAnswerButtons(currentQuestion) {
     });
 }
 
+// Continuation of quiz
 function generateNextQuestion() {
     userSelectedAnswer = false;
     const currentQuestion = getNextQuestion();
@@ -119,10 +116,10 @@ function generateNextQuestion() {
        generateAnswerButtons(currentQuestion); 
     } else {
         finishQuiz();
-    }
-    
+    } 
 }
 
+// When user starts quiz, questions are presented
 function startQuiz () {
     switchScreen(introScreen, questionContainer);
     startTimer();
@@ -130,21 +127,20 @@ function startQuiz () {
     generateNextQuestion();
 }
 
-// handle logic when quiz is finished
+// Quiz Completion Logic
 function finishQuiz() {
 
-    // stop timer
+    // Stop timer
     clearInterval(timerInterval);
 
-    // switch from questions screen to end of quiz screen
+    // Switch from questions screen to end of quiz screen
     switchScreen(questionContainer, allDoneContainer);
 
-    // update score title
+    // Update score title
     scoreTitle.textContent = `All done! Your score is: ${timerCounter}`
-
-
 }
 
+// Allows user to select an answer and receive feedback
 function onAnswerChoiceClicked(event) {
 
     // if user has selected an answer, return out of the function
@@ -185,34 +181,59 @@ function onAnswerChoiceClicked(event) {
 
             // generate next question
             generateNextQuestion();
-        }, 2000)
-
-
+        }, 1000)
     }
 }
 
-function onScoreSubmit() {
-
+// Submits user score -> enter initials screens
+function onScoreSubmit(event) {
+    event.preventDefault()
     const userInitials = inputInitials.value;
     console.log(userInitials);
+    let userScore = JSON.parse(localStorage.getItem("codeQuiz")) ||[]
+    userScore.push({user: userInitials, score: timerCounter})
 
+    localStorage.setItem ('codeQuiz', JSON.stringify(userScore))
+
+    switchScreen(allDoneContainer, highScoreContainer);
+    displayHighScores();
 }
 
-submitBtn.addEventListener('click', onScoreSubmit)
+// Initials presented on hs screen
+function displayHighScores() {
+ 
+    let userScore = JSON.parse(localStorage.getItem("codeQuiz")) ||[]
+    for (let i = 0; i < userScore.length; i++) {
+        for(let j=0; j <userScore.length; j++) {
+         if(userScore[i].score > userScore[j].score){
+             let temp = userScore[j]
+             userScore[j] = userScore[i]
+             userScore[i] = temp
+         }
+        }
+    }
+    for (let i = 0; i < userScore.length; i++)  {
+        let li = document.createElement('li')
+        let text = document.createTextNode(`${userScore[i].user} - ${userScore[i].score}`)
+        li.appendChild(text)
+        highScoreList.appendChild(li)
+    }
+}
+
+// Clear hs
+function clearScoresBtn () {
+    console.log("CLEAR")
+    localStorage.removeItem ('codeQuiz')
+    highScoreList.innerHTML = '';
+} 
+
+// Go back 
+function goBackBtn () {
+    location.reload ();
+}
+
+// Final Event Listeners 
 quizAnswers.addEventListener('click', onAnswerChoiceClicked)
-
-
-
-
-
-
-
-
-// Score page 
-
-// VHS local storage name of local storage 
-// high-low scores 
-// clear hs
-
-
-// reduce time
+submitBtn.addEventListener('click', onScoreSubmit)
+clearHighScores.addEventListener('click', clearScoresBtn)
+goBack.addEventListener('click', goBackBtn)
