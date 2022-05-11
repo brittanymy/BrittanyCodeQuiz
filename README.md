@@ -30,3 +30,9 @@ THEN I can save my initials and score
 -   Final test of webpage functionality (DONE)
 
 #### Deployed link & Screenshot
+https://brittanymy.github.io/quick-ticket/
+
+![Introduction Screen](./assets/images/codequizintro.png)
+![Question Container](./assets/images/codequizconatiner.png)
+![Quiz Completion Screen](./assets/images/alldonescreen.png)
+![High Score List](./assets/images/highscorelist.png)
