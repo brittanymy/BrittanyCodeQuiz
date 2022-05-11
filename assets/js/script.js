@@ -6,6 +6,7 @@ const quizQuestion = document.getElementById ('question'),
      inputInitials = document.getElementById ('initials'),
      submitBtn = document.getElementById ('submit-btn'),
      highScoreList = document.getElementById ('hs-list'),
+     viewHighScores = document.getElementById ('vhs'),
      correctAnswer = document.getElementById ('correct'),
      wrongAnswer = document.getElementById ('wrong'),
      goBack = document.getElementById ('back-btn'),
@@ -189,7 +190,7 @@ function onAnswerChoiceClicked(event) {
 function onScoreSubmit(event) {
     event.preventDefault()
     const userInitials = inputInitials.value;
-    console.log(userInitials);
+
     let userScore = JSON.parse(localStorage.getItem("codeQuiz")) ||[]
     userScore.push({user: userInitials, score: timerCounter})
 
@@ -218,6 +219,7 @@ function displayHighScores() {
         li.appendChild(text)
         highScoreList.appendChild(li)
     }
+
 }
 
 // Clear hs
@@ -236,4 +238,6 @@ function goBackBtn () {
 quizAnswers.addEventListener('click', onAnswerChoiceClicked)
 submitBtn.addEventListener('click', onScoreSubmit)
 clearHighScores.addEventListener('click', clearScoresBtn)
+viewHighScores.addEventListener('click', displayHighScores)
+console.log(viewHighScores, 'ok');
 goBack.addEventListener('click', goBackBtn)
