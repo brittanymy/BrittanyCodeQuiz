@@ -2,7 +2,7 @@
 # Web APIs Challenge: Code Quiz
 
 ## Description
-This coding quiz gives the user a set of questions related to basic coding terminology and facts. The quiz is broken down into 4 stages; The introduction, the question container, the quiz completion screen and final high score list screen. The user is given a timer at the top right corner. When the user answers the question wrong then 10 seconds are subtracted from said timer. At quiz completion the user is presented with their score and a form to enter their initials. Their score and initials are then saved using local storage. It's important to note that the user's score is based off of how much time is left on quiz completion.
+This coding quiz gives the user a set of questions related to basic coding terminology and facts. The quiz is broken down into 4 stages; The introduction, the question container, the quiz completion screen and final high score list screen. The user is given a timer at the top right corner. When the user answers the question wrong then 10 seconds are subtracted from said timer. At quiz completion the user is presented with their score and a form to enter their initials. Their score and initials are then saved using local storage. It's important to note that the user's score is based off of how much time is left on quiz completion. Technologies: HTML, CSS, Javascript.
 
 ## User Story
 AS A coding boot camp student
@@ -29,7 +29,7 @@ THEN I can save my initials and score
 -   Create local storage functionality in js (DONE)
 -   Final test of webpage functionality (DONE)
 
-#### Deployed link & Screenshot
+#### Deployed link & Screenshots
 https://brittanymy.github.io/quick-ticket/
 
 ![Introduction Screen](./assets/images/codequizintro.png)

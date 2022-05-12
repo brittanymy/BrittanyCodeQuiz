@@ -200,6 +200,14 @@ function onScoreSubmit(event) {
     displayHighScores();
 }
 
+// 
+function onViewScores () {
+    switchScreen(introScreen, highScoreContainer)
+    displayHighScores();
+
+    switchScreen(questionContainer, highScoreContainer)
+}
+
 // Initials presented on hs screen
 function displayHighScores() {
  
@@ -213,18 +221,18 @@ function displayHighScores() {
          }
         }
     }
+
+    highScoreList.innerHTML = '';
     for (let i = 0; i < userScore.length; i++)  {
         let li = document.createElement('li')
         let text = document.createTextNode(`${userScore[i].user} - ${userScore[i].score}`)
         li.appendChild(text)
         highScoreList.appendChild(li)
     }
-
 }
 
 // Clear hs
 function clearScoresBtn () {
-    console.log("CLEAR")
     localStorage.removeItem ('codeQuiz')
     highScoreList.innerHTML = '';
 } 
@@ -238,6 +246,5 @@ function goBackBtn () {
 quizAnswers.addEventListener('click', onAnswerChoiceClicked)
 submitBtn.addEventListener('click', onScoreSubmit)
 clearHighScores.addEventListener('click', clearScoresBtn)
-viewHighScores.addEventListener('click', displayHighScores)
-console.log(viewHighScores, 'ok');
+viewHighScores.addEventListener('click', onViewScores)
 goBack.addEventListener('click', goBackBtn)
